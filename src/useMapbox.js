@@ -1,14 +1,15 @@
 import { useLayoutEffect } from "react";
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
-export default function useMapbox(container, center, zoom) {
-
+export default function useMapbox(containerRef) {
+  mapboxgl.accessToken =
+  "pk.eyJ1Ijoib3RyaWNhbGEiLCJhIjoiY2tqMjFjcTNzMnp2djJ1bW05NW9zd2h6NCJ9.0w535oE4G9JjDpDxC_vVuw";
   useLayoutEffect(() => {
-    const map = new mapboxgl.Map({
-      container: container || "map",
+      const map = new mapboxgl.Map({
+      container: containerRef.current,
       style: "mapbox://styles/mapbox/dark-v10",
-      center: center || [37.61192, 55.76199],
-      zoom: zoom || 10
+      center: [37.61192, 55.76199],
+      zoom: 10
     });
   }, []);
 }
